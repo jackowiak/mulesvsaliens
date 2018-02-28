@@ -8,6 +8,7 @@
         <meta name="keyword" content="front end, project, to do list" />
         <meta name="description" content="front-end assignments of jm" />
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" href="animate.css" />
         <link href="https://fonts.googleapis.com/css?family=Bellefair|Hind+Siliguri:300,400,600|Kavivanar" rel="stylesheet">
     </head>
     <body>
@@ -37,13 +38,17 @@
         </main>
         <div class="mainChoosePlayer">
             <div class="board">
-                <div class="choosePlayerButton" id="xbutton"><div class="image"><i class="fab fa-sticker-mule"></i></div> Mules</div>
-                <div class="versus" id="vs">versus</div>            
-                <div class="choosePlayerButton" id="obutton">Aliens <div class="image"><i class="fab fa-reddit-alien"></i></div></div>            
+                <div class="title">Mules versus Aliens</div>
+                <div class="image1"><i class="fab fa-sticker-mule"></i></div>
+                <div class="image2"><i class="fab fa-reddit-alien"></i></div>
+                <div class="choosePlayerButton animated fadeInUp" id="xbutton">Mules</div>
+                <div class="choosePlayerButton animated fadeInUp" id="obutton">Aliens</div>
+                
             </div>
         </div> 
         
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

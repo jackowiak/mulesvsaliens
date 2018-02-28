@@ -26,9 +26,10 @@ const winningCombos = [
 let freeSquares;
 
 function choosexoro(e) {
-    let who = e.target.id;
+    console.log(e);
+    let who = e;
 
-    document.getElementsByClassName("mainChoosePlayer")[0].style.display = "none";
+    $(".mainChoosePlayer").fadeOut(100);
         
     if (who == "xbutton") {
         firstPlayer = "x";
@@ -166,5 +167,10 @@ function checkSecondPlayerCommonSquares(currentComboSecondPlayer) {
     }
 }
 
-xorobtnX.addEventListener("click", choosexoro);
-xorobtnO.addEventListener("click", choosexoro);
+xorobtnX.addEventListener("click", function(e) {
+    choosexoro(e.target.id);
+});
+
+xorobtnO.addEventListener("click", function(e) {
+    choosexoro(e.target.id);
+});
