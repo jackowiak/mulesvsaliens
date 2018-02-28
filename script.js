@@ -11,7 +11,7 @@ let firstPlayerImage;
 let secondPlayerImage;
 let x = '<i class="fab fa-sticker-mule"></i>';
 let o = '<i class="fab fa-reddit-alien"></i>';
-var clicked = true;
+let clicked = true;
 
 const winningCombos = [
     [0, 1, 2],
@@ -27,7 +27,6 @@ const winningCombos = [
 let freeSquares;
 
 function choosexoro(e) {
-    console.log(e);
     let who = e;
 
     $(".mainChoosePlayer").fadeOut(100);
