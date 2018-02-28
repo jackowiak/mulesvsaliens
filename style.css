@@ -97,8 +97,7 @@ table tr td:last-child {
   margin: 0 15px;
   color: #41D3B7;
   cursor: pointer;
-  border-radius: 5px;
-  animation-duration: 1s; }
+  border-radius: 5px; }
 
 .choosePlayerButton:hover {
   background-color: #222; }

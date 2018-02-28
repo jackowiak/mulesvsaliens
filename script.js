@@ -11,6 +11,7 @@ let firstPlayerImage;
 let secondPlayerImage;
 let x = '<i class="fab fa-sticker-mule"></i>';
 let o = '<i class="fab fa-reddit-alien"></i>';
+var clicked = true;
 
 const winningCombos = [
     [0, 1, 2],
@@ -52,6 +53,8 @@ function startGame() {
     gameStatus.textContent = "";
     
     freeSquares = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    
+    $(squares).removeClass("animated jello");
 
     for (var i = 0; i < squares.length; i++) {
         squares[i].innerHTML = "";
@@ -60,19 +63,31 @@ function startGame() {
     }
 }
 
-function firstPlayerMove(e) {   
+function firstPlayerMove(e) {
     
-    move(e.target.id, firstPlayer, firstPlayerImage);
-    
+    if (clicked) {
+        move(e.target.id, firstPlayer, firstPlayerImage);
+        clicked = false;
+        
     freeSpot = freeSquares.filter(o => typeof o == 'number');
-
-    if (freeSpot.length != 0) {
-        if (inprogress) {
-            move(machineMove(), secondPlayer, secondPlayerImage);
+    
+        function opponentMove() {
+            if (freeSpot.length != 0) {
+                if (inprogress) {
+                    move(machineMove(), secondPlayer, secondPlayerImage);
+                }
+            }        
         }
+
+        setTimeout(opponentMove, 400);
+
+        tie();
+        
+        setTimeout(function() {
+            clicked = true;
+        }, 800);
     }
     
-    tie();
 }
 
 function tie() {    
@@ -83,6 +98,7 @@ function tie() {
 }
 
 function move(squareId, player, playerImage) {
+    $(squares[squareId]).addClass("animated jello");
     squares[squareId].innerHTML = playerImage;
     squares[squareId].removeEventListener("click", firstPlayerMove);
     freeSquares[squareId] = player;
@@ -133,6 +149,7 @@ function checkFirstPlayerCommonSquares(currentComboFirstPlayer) {
             }
             
             inprogress = false;
+            
             for (var w = 0; w < squares.length; w++) {
                 squares[w].removeEventListener("click", firstPlayerMove);
             }
@@ -162,7 +179,7 @@ function checkSecondPlayerCommonSquares(currentComboSecondPlayer) {
 
             gameStatus.innerHTML = `${secondPlayerImage} won`;            
             
-            setTimeout(startGame, 1000);
+            setTimeout(startGame, 1200);
         }
     }
 }
